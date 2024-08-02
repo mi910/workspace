@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規登録</title>
+ <link rel="stylesheet" th:href="@{/css/taskAdd.css}">
+</head>
+<body>
+     
+ 	 <div class="wrapper">
+		  <div th:if="${validationError}" th:each="error : ${validationError}">
+      <label class="text-danger" th:text="${error}"></label>
+    </div>
+    <header class="header">
+      <h1>新規登録</h1></header>		
+
+		<form th:action="@{/taskAdd}" th:object="${taskRequest}" th:method="post">
+			
+      <div class="container">
+      <div class="form-group-left">
+      
+
+      <div class="form-group">
+        <label>タスク名<span class="text-danger"></span></label>
+        <input type="text" class="textbox-right" id="name" name="name" th:field="*{name}">
+      </div>
+	  
+	  <div class="form-group">
+	          <label>詳細<span class="text-danger"></span></label>
+	          <input type="text" class="textbox-right" id="detail" name="detail" th:field="*{detail}">
+	        </div>
+      
+      <div class="form-group">
+        <label>Status<span class="text-danger"></span></label>
+        <select class="textbox-right" id="status" name=“status” th:field="*{status}">
+           <option value="">---選択---</option>
+            <option value="setting">setting</option>
+            <option value="doing">doing</option>
+			<option value="completion">completion</option>
+       
+          </select>
+      </div>
+      <div class="form-group">
+        <label>期限<span class="text-danger"></span></label>
+        <input type="date" class="textbox-right" id="dueDate" name="dueDate" th:field="*{dueDate}" data-toggle="datepicker">
+      </div>
+    </div>
+    </div>
+       <div class="text-center">
+        <a th:href="@{/taskList}" class="btn">戻る</a>
+        <input type="submit"  name=”btn” value="登録" class="btn">
+      </div>
+    </form>
+  <div class="footer"></div>
+</div>
+</body>
+</html>

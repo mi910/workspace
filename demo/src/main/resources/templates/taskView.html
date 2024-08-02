@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>詳細</title>
+  <link rel="stylesheet"th:href="@{/css/taskView.css}">
+  </head>
+<body>
+	<div class="wrapper">
+		
+	<header class="header">
+	     <h1>詳細</h1></header>
+		 <div class="container">
+		 	    <div th:object="${taskData}">
+			
+			        <div class="form-name">Number</div>
+			        <div class="form-group">
+			          <p th:text="*{number}"></p>
+			        </div>
+						
+	        <div class="form-name">タスク名</div>
+	         <div class="form-group">
+	          <p th:text="*{name}"></p>
+	        </div>
+	     
+	        <div class="form-name">詳細</div>
+	          <div class="form-group">
+	          <p th:text="*{detail}"></p>
+	        </div>
+	
+	        <div class="form-name">Status</div>
+	          <div class="form-group">
+	          <p th:text="*{status}"></p>
+	        </div>
+
+		          <div class="form-name">期限</div>
+		          <div class="form-group">
+		            <p th:text="*{dueDate}"></p>
+		          </div>
+				  </div>	
+				  </div>
+	 
+	    <div class="text-center">
+	      <a th:href="@{/taskEdit/{number}/edit(number=*{number})}" class="btn" >編集</a>
+	      <a th:href="@{/taskList/{number}/delete(number=*{number})}" class="btn">削除</a>
+	      <a th:href="@{/taskList}" class="btn">戻る</a>
+	    </div>
+		<footer class="footer">
+		      </footer>
+		
+</body>
+</html>
